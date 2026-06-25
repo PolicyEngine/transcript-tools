@@ -1,0 +1,79 @@
+# Default PolicyEngine transcript glossary.
+#
+# terms        : deterministic regex -> replacement, applied to BOTH the
+#                captions and the readable transcript (always safe / faithful).
+# filler       : phrases removed from the readable transcript only
+#                (case-insensitive). Captions keep them, to stay in sync.
+# proper_nouns : words that keep their capitalization mid-sentence in the
+#                readable transcript.
+# speakers     : optional full-name -> caption-label overrides. Without an
+#                entry, the speaker's first name is used (e.g. "Max Ghenis" ->
+#                "Max"). Set e.g. {"Jane Doe": "Audience"} to anonymize.
+#
+# For one-off, per-talk corrections (e.g. a name or a stray mishear), pass an
+# extra file with `--glossary extra.yaml`; it layers on top of this one.
+
+terms:
+  - { pattern: '[Pp]olicy\s+[Ee]ngine', replace: PolicyEngine }
+  - { pattern: '[Pp]olicy\s+[Bb]ench', replace: PolicyBench }
+  - { pattern: '[Cc]hat\s?[Gg][Pp][Tt]', replace: ChatGPT }
+  - { pattern: 'GP4\.\s*5\.4\s*nano', replace: GPT-5.4 nano }
+  - { pattern: 'GPT[\s-]*5\.4\s*nano', replace: GPT-5.4 nano }
+  - { pattern: 'GPT[\s-]*5\.4\s*mini', replace: GPT-5.4 mini }
+  - { pattern: 'GPT[\s-]*5\.5', replace: GPT-5.5 }
+  - { pattern: 'GPT[\s-]*5\.4', replace: GPT-5.4 }
+  - { pattern: '\bgemini\b', replace: Gemini }
+  - { pattern: '\bgrok\b', replace: Grok }
+  - { pattern: '\b[Tt]ax[\s-]?[Ss]im\b', replace: TAXSIM }
+  - { pattern: '\b[Oo]pen\s?[Ff]isca\b', replace: OpenFisca }
+  - { pattern: '\bexact outfits\b', replace: exact outputs }
+
+filler:
+  - you know
+  - sort of
+  - kind of
+  - i mean
+  - basically
+
+proper_nouns:
+  - I
+  - PolicyEngine
+  - PolicyBench
+  - GPT
+  - Gemini
+  - Claude
+  - Grok
+  - Haiku
+  - Opus
+  - Sonnet
+  - Fable
+  - ChatGPT
+  - TAXSIM
+  - OpenFisca
+  - Medicaid
+  - Medicare
+  - SNAP
+  - TANF
+  - WIC
+  - CHIP
+  - SSI
+  - SSDI
+  - IRA
+  - EITC
+  - FICA
+  - US
+  - U.S.
+  - UK
+  - Texas
+  - Wisconsin
+  - Louisiana
+  - Colorado
+  - Arizona
+  - New
+  - Python
+  - LLM
+  - LLMs
+  - AI
+  - AIs
+
+speakers: {}
