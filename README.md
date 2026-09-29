@@ -89,6 +89,10 @@ rejects any polished turn that alters a number, dollar amount, or percentage
 (or balloons the text), falling back to the deterministic version and telling
 you how many turns it kept. Captions are never sent to the model.
 
+The polish uses `claude-sonnet-5-5` at low effort by default. Pick another
+model with `--model`; it must accept the effort parameter (current Opus and
+Sonnet models do, Haiku 4.5 does not).
+
 ## Develop
 
 ```bash
