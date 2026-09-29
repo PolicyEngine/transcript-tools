@@ -56,8 +56,9 @@ def _build_parser() -> argparse.ArgumentParser:
     )
     p.add_argument(
         "--model",
-        default="claude-haiku-4-5-20251001",
-        help="model id for --llm (default: %(default)s)",
+        default="claude-sonnet-5-5",
+        help="model id for --llm; must accept the effort parameter "
+        "(default: %(default)s)",
     )
     return p
 

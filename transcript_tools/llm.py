@@ -45,13 +45,23 @@ def _client(api_key: str | None):
 
 
 def polish_turn(text: str, *, model: str, client) -> str:
-    """Polish one turn via the Anthropic API. Returns raw model text."""
+    """Polish one turn via the Anthropic API. Returns raw model text.
+
+    Raises if the response is incomplete (a refusal, or a ``max_tokens``
+    cut-off): partial text could still pass the number guard, so the caller
+    must keep the deterministic turn instead.
+    """
     resp = client.messages.create(
         model=model,
-        max_tokens=4096,
+        # Thinking counts toward max_tokens, so leave room beyond the reply.
+        max_tokens=16000,
+        # Per-turn cleanup: low effort skips thinking on most turns.
+        output_config={"effort": "low"},
         system=_SYSTEM,
         messages=[{"role": "user", "content": text}],
     )
+    if resp.stop_reason != "end_turn":
+        raise RuntimeError(f"incomplete response (stop_reason={resp.stop_reason})")
     parts = [b.text for b in resp.content if getattr(b, "type", None) == "text"]
     return "".join(parts).strip()
 
