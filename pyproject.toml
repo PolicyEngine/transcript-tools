@@ -3,7 +3,7 @@ name = "transcript-tools"
 version = "0.1.0"
 description = "Clean meeting transcripts (Zoom / MS Stream) into captions and readable transcripts, with a project glossary and a guarded LLM polish."
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 license = { text = "MIT" }
 authors = [{ name = "PolicyEngine" }]
 keywords = ["transcript", "captions", "subtitles", "vtt", "srt", "zoom", "youtube"]
